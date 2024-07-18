@@ -65,6 +65,17 @@
     </choose>
   </macro>
 
+  <macro name="container-title-check">
+    <choose>
+      <if variable="full-container-title">
+        <text variable="full-container-title" font-style="italic"/>
+      </if>
+      <else>
+        <text variable="container-title" form="long" font-style="italic"/>
+      </else>
+    </choose>
+  </macro>
+
   <macro name="citation-locator">
     <group delimiter=" ">
       <choose>
@@ -105,58 +116,7 @@
           <text macro="author" suffix=", " />
           <group delimiter=", ">
             <text macro="title" />
-            <choose>
-              <if variable="DOI">
-                <choose>
-                  <if string-start="10.48550/arXiv." variable="DOI">
-                    <text value="arXiv" font-style="italic" />
-                  </if>
-                  <else>
-                    <choose>
-                      <if variable="full-container-title">
-                        <text variable="full-container-title" font-style="italic"
-                          match="(.*?)\s*\d{4}.*" replace="$1" />
-                      </if>
-                      <else>
-                        <text variable="container-title" font-style="italic" match="(.*?)\s*\d{4}.*"
-                          replace="$1" />
-                      </else>
-                    </choose>
-                  </else>
-                </choose>
-              </if>
-              <else-if variable="URL">
-                <choose>
-                  <if contains="arxiv.org" variable="URL">
-                    <text value="arXiv" font-style="italic" />
-                  </if>
-                  <else>
-                    <choose>
-                      <if variable="full-container-title">
-                        <text variable="full-container-title" font-style="italic"
-                          match="(.*?)\s*\d{4}.*" replace="$1" />
-                      </if>
-                      <else>
-                        <text variable="container-title" font-style="italic" match="(.*?)\s*\d{4}.*"
-                          replace="$1" />
-                      </else>
-                    </choose>
-                  </else>
-                </choose>
-              </else-if>
-              <else>
-                <choose>
-                  <if variable="full-container-title">
-                    <text variable="full-container-title" font-style="italic"
-                      match="(.*?)\s*\d{4}.*" replace="$1" />
-                  </if>
-                  <else>
-                    <text variable="container-title" font-style="italic" match="(.*?)\s*\d{4}.*"
-                      replace="$1" />
-                  </else>
-                </choose>
-              </else>
-            </choose>
+            <text macro="container-title-check" />
             <group delimiter=" ">
               <text term="volume" form="short" />
               <text variable="volume" />
