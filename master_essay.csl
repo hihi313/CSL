@@ -3,7 +3,7 @@
   demote-non-dropping-particle="sort-only">
   <info>
     <title>IEEE - Ounce Wannabe</title>
-    <id>https://csl.mendeley.com/styles/755707591/ieee-master-essay</id>
+    <id>http://csl.mendeley.com/styles/755707591/ieee</id>
     <link href="http://www.zotero.org/styles/ieee" rel="self" />
     <link
       href="http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf"
@@ -11,17 +11,31 @@
     <link
       href="https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/"
       rel="documentation" />
+    <author>
+      <name>Michael Berkowitz</name>
+      <email>mberkowi@gmu.edu</email>
+    </author>
+    <contributor>
+      <name>Ounce Wannabe</name>
+      <uri></uri>
+    </contributor>
     <category citation-format="numeric" />
     <category field="engineering" />
     <category field="generic-base" />
     <summary>IEEE style as per the 2023 guidelines, V 11.29.2023.</summary>
-    <updated>2024-07-17T08:43:18+00:00</updated>
+    <updated>2024-07-18T02:58:17+00:00</updated>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a
       Creative Commons Attribution-ShareAlike 3.0 License</rights>
   </info>
   <locale xml:lang="en">
+    <date form="text">
+      <date-part name="month" form="short" suffix=" " />
+      <date-part name="day" form="numeric-leading-zeros" suffix=", " />
+      <date-part name="year" />
+    </date>
     <terms>
       <term name="chapter" form="short">ch.</term>
+      <term name="chapter-number" form="short">ch.</term>
       <term name="presented at">presented at the</term>
       <term name="available at">available</term>
     </terms>
@@ -34,18 +48,19 @@
       <substitute>
         <names variable="editor" />
         <names variable="translator" />
-        <text macro="title" />
+        <text macro="director" />
       </substitute>
     </names>
   </macro>
 
   <macro name="title">
     <choose>
-      <if type="bill book graphic legal_case legislation motion_picture song" match="any">
+      <if type="bill book graphic legal_case legislation motion_picture song standard software"
+        match="any">
         <text variable="title" font-style="italic" />
       </if>
       <else>
-        <text variable="title" />
+        <text variable="title" quotes="true" />
       </else>
     </choose>
   </macro>
@@ -91,11 +106,55 @@
           <group delimiter=", ">
             <text macro="title" />
             <choose>
-              <if variable="full-container-title">
-                <text variable="full-container-title" font-style="italic" />
+              <if variable="DOI">
+                <choose>
+                  <if string-start="10.48550/arXiv." variable="DOI">
+                    <text value="arXiv" font-style="italic" />
+                  </if>
+                  <else>
+                    <choose>
+                      <if variable="full-container-title">
+                        <text variable="full-container-title" font-style="italic"
+                          match="(.*?)\s*\d{4}.*" replace="$1" />
+                      </if>
+                      <else>
+                        <text variable="container-title" font-style="italic" match="(.*?)\s*\d{4}.*"
+                          replace="$1" />
+                      </else>
+                    </choose>
+                  </else>
+                </choose>
               </if>
+              <else-if variable="URL">
+                <choose>
+                  <if contains="arxiv.org" variable="URL">
+                    <text value="arXiv" font-style="italic" />
+                  </if>
+                  <else>
+                    <choose>
+                      <if variable="full-container-title">
+                        <text variable="full-container-title" font-style="italic"
+                          match="(.*?)\s*\d{4}.*" replace="$1" />
+                      </if>
+                      <else>
+                        <text variable="container-title" font-style="italic" match="(.*?)\s*\d{4}.*"
+                          replace="$1" />
+                      </else>
+                    </choose>
+                  </else>
+                </choose>
+              </else-if>
               <else>
-                <text variable="container-title" form="long" font-style="italic" />
+                <choose>
+                  <if variable="full-container-title">
+                    <text variable="full-container-title" font-style="italic"
+                      match="(.*?)\s*\d{4}.*" replace="$1" />
+                  </if>
+                  <else>
+                    <text variable="container-title" font-style="italic" match="(.*?)\s*\d{4}.*"
+                      replace="$1" />
+                  </else>
+                </choose>
               </else>
             </choose>
             <group delimiter=" ">
