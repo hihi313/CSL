@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0"
+  demote-non-dropping-particle="sort-only">
+  <info>
+    <title>IEEE - Ounce Wannabe</title>
+    <id>https://csl.mendeley.com/styles/755707591/ieee-master-essay</id>
+    <link href="http://www.zotero.org/styles/ieee" rel="self" />
+    <link
+      href="http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf"
+      rel="documentation" />
+    <link
+      href="https://journals.ieeeauthorcenter.ieee.org/your-role-in-article-production/ieee-editorial-style-manual/"
+      rel="documentation" />
+    <category citation-format="numeric" />
+    <category field="engineering" />
+    <category field="generic-base" />
+    <summary>IEEE style as per the 2023 guidelines, V 11.29.2023.</summary>
+    <updated>2024-07-17T08:43:18+00:00</updated>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a
+      Creative Commons Attribution-ShareAlike 3.0 License</rights>
+  </info>
+  <locale xml:lang="en">
+    <terms>
+      <term name="chapter" form="short">ch.</term>
+      <term name="presented at">presented at the</term>
+      <term name="available at">available</term>
+    </terms>
+  </locale>
+  <!-- Macros -->
+  <macro name="author">
+    <names variable="author">
+      <name and="text" initialize-with=". " />
+      <label form="short" prefix=", " text-case="capitalize-first" />
+      <substitute>
+        <names variable="editor" />
+        <names variable="translator" />
+        <text macro="title" />
+      </substitute>
+    </names>
+  </macro>
+
+  <macro name="title">
+    <choose>
+      <if type="bill book graphic legal_case legislation motion_picture song" match="any">
+        <text variable="title" font-style="italic" />
+      </if>
+      <else>
+        <text variable="title" />
+      </else>
+    </choose>
+  </macro>
+
+  <macro name="citation-locator">
+    <group delimiter=" ">
+      <choose>
+        <if locator="page">
+          <label variable="locator" form="short" />
+        </if>
+        <else>
+          <label variable="locator" form="short" text-case="capitalize-first" />
+        </else>
+      </choose>
+      <text variable="locator" />
+    </group>
+  </macro>
+  <!-- Citation -->
+  <citation>
+    <sort>
+      <key variable="citation-number" />
+    </sort>
+    <layout delimiter=", ">
+      <group prefix="[" suffix="]" delimiter=", ">
+        <text variable="citation-number" />
+        <text macro="citation-locator" />
+      </group>
+    </layout>
+  </citation>
+  <!-- Bibliography -->
+  <bibliography entry-spacing="0" second-field-align="flush">
+    <layout>
+      <text variable="citation-number" prefix="[" suffix="] " />
+      <choose>
+        <if type="webpage post post-weblog" match="any">
+          <group delimiter=" ">
+            <text value="Available Online:" />
+            <text variable="URL" />
+          </group>
+        </if>
+        <else>
+          <text macro="author" suffix=", " />
+          <group delimiter=", ">
+            <text macro="title" />
+            <choose>
+              <if variable="full-container-title">
+                <text variable="full-container-title" font-style="italic" />
+              </if>
+              <else>
+                <text variable="container-title" form="long" font-style="italic" />
+              </else>
+            </choose>
+            <group delimiter=" ">
+              <text term="volume" form="short" />
+              <text variable="volume" />
+            </group>
+            <group delimiter=" ">
+              <label variable="page" form="short" />
+              <text variable="page" />
+            </group>
+            <date variable="issued">
+              <date-part name="year" />
+            </date>
+          </group>
+        </else>
+      </choose>
+    </layout>
+  </bibliography>
+</style>
