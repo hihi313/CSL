@@ -8,3 +8,10 @@
 5. Change the citation style.
     - With given custom CSL file/URL.
     - The current [master_essay.csl](https://csl.mendeley.com/styles/755707591/ieee)
+
+# Resources
+
+1. [Mendeley CSL editor](https://csl.mendeley.com/visualEditor/)
+2. [Mendeley CSL validator](https://validator.citationstyles.org/)
+3. [CSL spec docs](https://docs.citationstyles.org/en/stable/specification.html#toc-entry-89)
+4. [bibtexparser docs](https://bibtexparser.readthedocs.io/en/main/bibtexparser.html)
