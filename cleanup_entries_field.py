@@ -8,12 +8,14 @@ year_ptrn = re.compile(r"\s*\b(1[6-9]\d{2}|20[0-9]{2})\b\s*")
 # Create a regex pattern to match abbreviations (3 or more uppercase letters)
 abbr_ptrn = re.compile(r"\s*\(\s*\b([A-Z]{3,})\b\s*\)\s*")
 
+
 def is_int(value):
     try:
         int(value)
         return True
     except ValueError:
         return False
+
 
 def process_bib_file(filename):
     # Define a middleware for decoding LaTeX
@@ -43,6 +45,7 @@ def process_bib_file(filename):
                 entry[k] = abbr_ptrn.sub("", v2)
                 # print(f"date:  {entry["date"]}")
     return library
+
 
 if __name__ == "__main__":
     # Define command line arguments
