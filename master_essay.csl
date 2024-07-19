@@ -53,6 +53,13 @@
     </names>
   </macro>
 
+  <macro name="director">
+    <names variable="director">
+      <name and="text" et-al-min="7" et-al-use-first="1" initialize-with=". " />
+      <et-al font-style="italic" />
+    </names>
+  </macro>
+
   <macro name="title">
     <choose>
       <if type="bill book graphic legal_case legislation motion_picture song standard software"
@@ -67,11 +74,11 @@
 
   <macro name="container-title-check">
     <choose>
-      <if variable="full-container-title">
-        <text variable="full-container-title" font-style="italic"/>
+      <if variable="container-title">
+        <text variable="container-title" form="long" font-style="italic" />
       </if>
       <else>
-        <text variable="container-title" form="long" font-style="italic"/>
+        <text variable="publisher" />
       </else>
     </choose>
   </macro>
