@@ -1,7 +1,11 @@
+一些工具 & CSL 以符合碩論style
+
 # Workflow
 
 1. Download all Bibtex from Semantic Scholar.
+    - Using semantic scholar will make sure necessary fields are filled/present.
 2. Run the cleanup python script.
+    - Clean up the year, container abbr. (Because CSL can't modify field value)
 3. Import into Mendeley/Zotero
     - Merge with some existing items(which is not available on Semantic Scholar) in your library.
 4. Use Mendely/Zotero word plugin to insert cite/bib. .
