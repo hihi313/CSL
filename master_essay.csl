@@ -2,8 +2,8 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0"
   demote-non-dropping-particle="sort-only">
   <info>
-    <title>IEEE - Ounce Wannabe</title>
-    <id>http://csl.mendeley.com/styles/755707591/ieee</id>
+    <title>NTUST Master Essay</title>
+    <id>http://csl.mendeley.com/styles/755707591/master-essay</id>
     <link href="http://www.zotero.org/styles/ieee" rel="self" />
     <link
       href="http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE_Reference_Guide.pdf"
@@ -55,8 +55,7 @@
 
   <macro name="director">
     <names variable="director">
-      <name and="text" et-al-min="7" et-al-use-first="1" initialize-with=". " />
-      <et-al font-style="italic" />
+      <name and="text" initialize-with=". " />
     </names>
   </macro>
 
@@ -64,10 +63,10 @@
     <choose>
       <if type="bill book graphic legal_case legislation motion_picture song standard software"
         match="any">
-        <text variable="title" font-style="italic" />
+        <text variable="title" quotes="true" form="long" text-case="title" />
       </if>
       <else>
-        <text variable="title" quotes="true" />
+        <text variable="title" quotes="true" form="long" text-case="title" />
       </else>
     </choose>
   </macro>
@@ -75,10 +74,10 @@
   <macro name="container-title-check">
     <choose>
       <if variable="container-title">
-        <text variable="container-title" form="long" font-style="italic" />
+        <text variable="container-title" form="long" text-case="title" font-style="italic" />
       </if>
       <else>
-        <text variable="publisher" />
+        <text variable="publisher" form="long" text-case="title" font-style="italic" />
       </else>
     </choose>
   </macro>
